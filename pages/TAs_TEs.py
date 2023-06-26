@@ -43,7 +43,14 @@ with column1:
             """tree_file = f"files/column1.nwk"
             t = Tree(tree_file)
             st.write(t)"""
-
+        case "cog_stats":
+            df = pd.read_csv("files/cog_stats_column1_full_name.csv",
+                             sep="\t")
+            st.dataframe(df)
+        case "pfam_stats":
+            df = pd.read_csv("files/pfam_stats_column1_full_name.csv",
+                     sep="\t")
+            st.dataframe(df)
 
 with column2:
     # drop down menu
@@ -68,6 +75,10 @@ with column2:
             details = "A tree represented file of TE's sequences"
             st.subheader("Details")
             st.write(details)
+        case "cog_stats":
+            pass
+        case "pfam_stats":
+            pass
 
 """    st.subheader("Tree comparison")
     st.image("images/tree_comparison.png")"""
