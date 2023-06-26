@@ -37,17 +37,26 @@ with column1:
                 tree = file.readline()
             tree = tree[:-1]
 
-            details = "A tree represented file of TA's sequences"
+            details = "A tree represented file of TA's sequences produced " \
+                      "from MEGA-X"
             st.subheader("Details")
             st.write(details)
             """tree_file = f"files/column1.nwk"
             t = Tree(tree_file)
             st.write(t)"""
         case "cog_stats":
+            details = "Count each distinct COG per cluster v.s. overall " \
+                      "clusters (Cut tree at level 3 to get one cluster)."
+            st.subheader("Details")
+            st.write(details)
             df = pd.read_csv("files/cog_stats_column1_full_name.csv",
                              sep="\t")
             st.dataframe(df)
         case "pfam_stats":
+            details = "Count each distinct pfam per cluster v.s. overall " \
+                      "clusters (Cut tree at level 3 to get one cluster)."
+            st.subheader("Details")
+            st.write(details)
             df = pd.read_csv("files/pfam_stats_column1_full_name.csv",
                      sep="\t")
             st.dataframe(df)
@@ -72,15 +81,27 @@ with column2:
             st.write(details)
             st.write(example)
         case "TE.nwk":
-            details = "A tree represented file of TE's sequences"
+            details = "A tree represented file of TE's sequences produced " \
+                      "from MEGA-X"
             st.subheader("Details")
             st.write(details)
         case "cog_stats":
-            pass
+            details = "Count each distinct COG per cluster v.s. overall " \
+                      "clusters (Cut tree at level 3 to get one cluster)."
+            st.subheader("Details")
+            st.write(details)
+            df = pd.read_csv("files/pruned_column2_COG_stats.csv",
+                             sep="\t")
+            st.dataframe(df)
         case "pfam_stats":
-            pass
+            details = "Count each distinct pfam per cluster v.s. overall " \
+                      "clusters (Cut tree at level 3 to get one cluster)."
+            st.subheader("Details")
+            st.write(details)
+            df = pd.read_csv("files/pruned_column2_pfam_stats.csv",
+                             sep="\t")
+            st.dataframe(df)
 
-"""    st.subheader("Tree comparison")
-    st.image("images/tree_comparison.png")"""
+
 
 
