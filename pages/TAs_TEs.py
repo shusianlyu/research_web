@@ -6,8 +6,10 @@ st.set_page_config(layout="wide")
 # Add header
 st.header("TA and TE files")
 # option files
-TA_options = ["TA.fas", "TA.nwk", "cog_stats", "pfam_stats"]
-TE_options = ["TE.fas", "TE.nwk", "cog_stats", "pfam_stats"]
+TA_options = ["TA.fas", "TA.nwk", "TA_renamed.fas", "TA_renamed.nwk",
+              "cog_stats", "pfam_stats"]
+TE_options = ["TE.fas", "TE.nwk", "TE_renamed.fas", "TE_renamed.nwk",
+              "cog_stats", "pfam_stats"]
 
 # Add columns
 column1, empty, column2 = st.columns([5, 0.5, 5])
@@ -44,6 +46,26 @@ with column1:
             """tree_file = f"files/column1.nwk"
             t = Tree(tree_file)
             st.write(t)"""
+        case "TA_renamed.fas":
+            details = "It was produced by converting TA sequence " \
+                      "names with matching names from TA to " \
+                      "TE based on TASmania_tncentral_blast_output.tsv file"
+            example = """
+            \>Ga0308418_1000051\n
+            MASPELEVLGITTVAGNVSVEKTSRNARQICELAGCPQMAVYAGCPRPLLRPLQTAEEVHGKSG
+            IDGANLPEPQMPLGSLHAVQYLIETLMAAQEPVTLALLGPMTNLAVALVQQPRIVERIRRLVFM
+            GGSAFEGNTTPAAEFNIFTDPHAAQIVLSAGIPEVVMLGLNVTQQVLSTPERIERIRALGTRVG
+            QTVADMLAFYGKFDIRRYGLPGGPLHDPCVVAYLLQPQLFELKPCYVEVETASPLNLGRTVVDR
+            WGLSGRPANVQVAFGVDAEEFYRLLTERLGRYR
+            """
+            st.subheader("Details")
+            st.write(details)
+            st.write(example)
+        case "TA_renamed.nwk":
+            details = "A tree represented file of renamed TA sequences " \
+                      "produced from MEGA-X"
+            st.subheader("Details")
+            st.write(details)
         case "cog_stats":
             details = "Count each distinct COG per cluster v.s. overall " \
                       "clusters (Cut tree at level 3 to get one cluster)."
@@ -101,7 +123,26 @@ with column2:
             df = pd.read_csv("files/pruned_column2_pfam_stats.csv",
                              sep="\t")
             st.dataframe(df)
-
+        case "TE_renamed.fas":
+            details = "It was produced by converting TE sequence " \
+                      "names with matching names from TE to " \
+                      "TA based on TASmania_tncentral_blast_output.tsv file"
+            example = """
+                    \>Ga0308414_10302791\n
+                    ACGGTGTGCACGTGAGGGGAGGTGCGGCGGGATAGCACCATGTGCTCGGCGATGCG
+                    CTGCCGCATGATGGACATGGGTTCGCGCAACTCGTCCCCCTCGAAGGGCCGCGACG
+                    GTCCCATGGTCGCCCCGGTGGCGTAGGTGGGCGGGGTGGAGGCGGCAGGCGCCGCC
+                    GGCCGGGAGGGCCGAGGCGCTGGCCTGGGAGTGGGGGTCACCGGGGGCGGAGCCGC
+                    CGCTGCAGGAGGCGCGGCGGGGGCGGCTTGCGCC...
+                    """
+            st.subheader("Details")
+            st.write(details)
+            st.write(example)
+        case "TE_renamed.nwk":
+            details = "A tree represented file of renamed TE sequences " \
+                      "produced from MEGA-X"
+            st.subheader("Details")
+            st.write(details)
 
 
 
