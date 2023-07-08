@@ -4,6 +4,15 @@ import pandas as pd
 # Set webpage layout
 st.set_page_config(layout="wide")
 # Add header
+st.header("pfam and cog spreadsheet")
+st.subheader("TA spreadsheet")
+TA_df = pd.read_csv("files/TASmania_hits_COGs_pfams.tsv", sep="\t")
+st.dataframe(TA_df)
+st.subheader("TE spreadsheet")
+TE_df = pd.read_csv("files/TNCentral_hits_COGs_pfams.tsv", sep="\t")
+st.dataframe(TE_df)
+
+# Add header
 st.header("TA and TE files")
 # option files
 TA_options = ["TA.fas", "TA.nwk", "TA_renamed.fas", "TA_renamed.nwk",
